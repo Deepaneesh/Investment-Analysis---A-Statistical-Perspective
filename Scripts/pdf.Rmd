@@ -1,0 +1,8 @@
+---
+title: "pdf"
+output: 
+  pdf_document: 
+    toc: true
+    highlight: tango
+---
+

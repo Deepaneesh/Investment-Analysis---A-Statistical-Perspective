@@ -7,32 +7,34 @@ rm(list = ls());gc()
 
 # Load constant ----------------------------------------------------------
 
-source("01_set_constant.R")
+source("Scripts/01_set_constant.R")
 
 # Loading Functions -------------------------------------------------------
 
-source("00_functions.R")
+source("Scripts/00_functions.R")
 
 # Data Download -----------------------------------------------------------
 
 if(data_download){
-  source("02_data_download.R")
+  source("Scripts/02_data_download.R")
 }
 
 # Input -------------------------------------------------------------------
 
-source("03_input.R")
+source("Scripts/03_input.R")
 
 # Data manipulation  --------------------------------------------------------
 
-source("04_data_manipulation.R")
+source("Scripts/04_data_manipulation.R")
 
-# Descriptive Analysis ----------------------------------------------------
+# Plot --------------------------------------------------------------------
 
-source("05_descriptive_analysis.R")
+source("Scripts/05_plots.R")
 
 # Investment Simulation ---------------------------------------------------
 
-source("06_investment_simulation.R")
+source("Scripts/06_investment_simulation.R")
 
+# Report Generation -------------------------------------------------------
 
+source("Scripts/report_generation.R")

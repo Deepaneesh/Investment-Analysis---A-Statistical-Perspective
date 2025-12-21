@@ -1,11 +1,11 @@
 
 # Inflation rate calculate ------------------------------------------------
 
-inflation_rate <- function(cpi, lag = 12) {
+growth_rate <- function(x, lag = 12) {
   c(
     rep(0, lag),
-    (cpi[(lag + 1):length(cpi)] - cpi[1:(length(cpi) - lag)]) /
-      cpi[1:(length(cpi) - lag)] * 100
+    (x[(lag + 1):length(x)] - x[1:(length(x) - lag)]) /
+      x[1:(length(x) - lag)] * 100
   )
 }
 

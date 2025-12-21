@@ -1,0 +1,36 @@
+---
+title: "R Notebook"
+output: html_document
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
+
+```{r,fig.width = 8, fig.height = 15}
+plot <- inflation_data  %>% ggplot(
+  aes(x=month,y=as.factor(year),fill = inflation_rate)
+)+geom_tile(color = "white")+
+  scale_fill_gradient2(
+    low = "red",
+    mid = "white",
+    high = "green",
+    midpoint = 0 )+
+  theme_minimal()+
+  scale_y_discrete(limits = rev)+
+  scale_x_discrete(position = "top")+
+  geom_text(aes(label = paste0(round(inflation_rate,1),"%")),size = 2)+
+  labs(title = "Inflation growth rate",
+       x = "Month", y = "years")+
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5 , face = "bold"))
+
+plotly:: ggplotly(plot)
+
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
