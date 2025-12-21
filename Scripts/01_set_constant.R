@@ -11,7 +11,7 @@ library(rmarkdown)
 
 # Constants ----------------------------------------------------------------
 
-data_download <- T
+data_download <- FALSE
 
 # inflation 
 start_year <- 1957
@@ -25,7 +25,7 @@ Nifty_end_year <- 2025
 # investment --------------------------------------------------------------
 
 additional_investment <- data.table(
-  year = c(2015,2015,2020, 2025),
+  year = c(2015,2015,2020, 2024),
   month_num = c(1,4,3, 1),
   amount = c(5000,6000,4000, 3000)
 )

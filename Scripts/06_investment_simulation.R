@@ -1,25 +1,148 @@
-investment_growth(
-  inflation_data %>% rename("inflation" = "inflation_rate"),
+
+# Inflation growth --------------------------------------------------------
+
+past_inflation_return <- investment_growth(
+  inflation_data,
   initial_investment = 0,
-  add_investment = additional_investment
-)%>% 
-  ggplot(aes(x = date, y = investment)) +
-  geom_line(color = "blue", size = 1) +
-  geom_bar(
-    data = additional_investment %>%
-      mutate(
-        date = as.Date(paste0(year, "-", month_num, "-01"))
-      ),
-    aes(x = date, y = amount),
-    stat = "identity",
-    fill = "orange",
-    alpha = 0.5
+  add_investment = additional_investment,
+  growth_col = "inflation"
+) 
+past_inflation_return %>%
+  ggplot(aes(x = date)) +
+  geom_line(
+    aes(y = investment_current_value, color = "Investment Current Value"),
+    size = 1
+  ) +
+  geom_line(
+    aes(y = actual_investment, color = "Actual Investment"),
+    size = 1
   ) +
   labs(
-    title = " Investment Growth Over Time with inflation rate ",
+    title = "Investment Growth Over Time with Inflation Rate",
     x = "Date",
-    y = "Investment Value"
+    y = "Investment Value",
+    color = "Investment Type"
   ) +
-  theme_minimal()+
-  theme(plot.title = element_text(hjust = 0.5 , face = "bold"))
+  scale_color_manual(
+    values = c(
+      "Investment Current Value" = "blue",
+      "Actual Investment" = "green"
+    )
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    legend.position = "bottom"
+  )
 
+#Nifty 50 Investment Growth ------------------------------------------------
+
+past_nifty_50_return <- investment_growth(
+  nifty_data,
+  initial_investment = 0,
+  add_investment = additional_investment,
+  growth_col = "monthly_return"
+) 
+past_nifty_50_return %>% 
+  ggplot(aes(x = date)) +
+  
+  geom_line(
+    aes(
+      y = investment_current_value,
+      color = "Investment Current Value"
+    ),
+    size = 1
+  ) +
+  
+  geom_line(
+    aes(
+      y = actual_investment,
+      color = "Actual Investment"
+    ),
+    size = 1
+  ) +
+  
+  labs(
+    title = "Investment Growth Over Time with NIFTY 50 Returns",
+    x = "Date",
+    y = "Investment Value",
+    color = "investment Type"
+  ) +
+  
+  scale_color_manual(
+    values = c(
+      "Investment Current Value" = "green",
+      "Actual Investment" = "blue"
+    )
+  ) +
+  
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    legend.position = "bottom"
+  )
+
+
+# Comparing both inflation and nifty 50 -----------------------------------
+
+comparison_data <- past_inflation_return %>%
+  select(date,month,year, investment_current_value_inflation = investment_current_value) %>%
+  inner_join(
+    past_nifty_50_return %>%
+      select(month,year, investment_current_value_nifty = investment_current_value,actual_investment),
+    by = c("month","year")
+  )
+comparison_data 
+past_investment_plot <- comparison_data %>% filter(year >= 2000) %>%
+  ggplot(aes(x = date)) +
+  
+  geom_line(
+    aes(
+      y = investment_current_value_inflation,
+      color = "Inflation growth Investment"
+    ),
+    size = 1
+  ) +
+  
+  geom_line(
+    aes(
+      y = investment_current_value_nifty,
+      color = "NIFTY 50 growth Investment"
+    ),
+    size = 1
+  ) +
+  
+  geom_line(
+    aes(
+      y = actual_investment,
+      color = "Actual Investment"
+    ),
+    size = 1
+  ) +
+  
+  labs(
+    title = "Investment Growth Over Time: Inflation vs NIFTY 50",
+    x = "Date",
+    y = "Investment Value",
+    color = "Investment Type"
+  ) +
+  
+  scale_color_manual(
+    values = c(
+      "Inflation growth Investment" = "red",
+      "NIFTY 50 growth Investment" = "blue",
+      "Actual Investment" = "green"
+    )
+  ) +
+  
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    legend.position = "bottom"
+  )+
+  scale_x_date(
+    date_breaks = "5 years",
+    date_labels = "%Y"
+  ) 
+past_investment_plot
+ggplotly(past_investment_plot)

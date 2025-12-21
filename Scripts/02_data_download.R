@@ -41,8 +41,6 @@ nifty <- nifty_df %>% mutate(
 rm(nifty_df, NSEI)
 data <- read.csv("input/nifty50_monthly_close.csv")
 
-write.csv(data, "input/nifty50_monthly_close.csv", row.names = FALSE)
-
 compare_df_cols(nifty, data) # check if columns are same
 
 combine_data <- rbind(nifty,data) # combine old and new data
@@ -51,7 +49,8 @@ rm(nifty, data) # remove unnecessary dataframes
 
 combine_data %>% arrange(Date) %>% get_dupes() # check for duplicates
 
-combine_data <- combine_data %>% distinct()  # remove duplicates
+combine_data <- combine_data %>% distinct(Date,.keep_all = T)  # remove duplicates
+combine_data <- combine_data %>% group_by(month,year) %>% filter(Date == max(Date)) %>% arrange(Date) %>% ungroup() # ensure last date of month
 
 write.csv(combine_data, "input/nifty50_monthly_close.csv", row.names = FALSE)
 rm(combine_data)

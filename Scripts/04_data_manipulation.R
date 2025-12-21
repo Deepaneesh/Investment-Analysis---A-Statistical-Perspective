@@ -10,7 +10,7 @@ inflation_data <-  inflation_data %>% mutate(
 
 # Calculating the inflation rate ------------------------------------------
 
-inflation_data <- inflation_data %>%
+inflation_data <- inflation_data %>% arrange(date) %>% 
   mutate(
     inflation = growth_rate(CPI, lag = 1) 
   )
@@ -28,7 +28,7 @@ nifty_data <- nifty_data %>% mutate(
   month_year = format(Date, "%b - %Y"),
   year = year(date),
   month = month(date, label = TRUE),month_num = month(date)
-) %>% select(date,year,month_num,month,month_year,Close)
+) %>% select(date,year,month_num,month,month_year,Close) %>% arrange(date)
 
 # Calculating the monthly return ------------------------------------------
 nifty_data <- nifty_data %>%
@@ -42,3 +42,5 @@ yearly_nifty_data <-  nifty_data %>% filter(month_num == 1) %>%
     yearly_return = growth_rate(Close, lag = 1),
     return_type = "Yearly"
   )
+
+
