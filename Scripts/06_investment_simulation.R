@@ -87,12 +87,13 @@ past_nifty_50_return %>%
 
 comparison_data <- past_inflation_return %>%
   select(date,month,year, investment_current_value_inflation = investment_current_value) %>%
-  inner_join(
+  full_join(
     past_nifty_50_return %>%
       select(month,year, investment_current_value_nifty = investment_current_value,actual_investment),
     by = c("month","year")
   )
-comparison_data 
+comparison_data[is.na(date), date := ymd(paste(year, month, 1, sep = "-"))]
+
 past_investment_plot <- comparison_data %>% filter(year >= 2000) %>%
   ggplot(aes(x = date)) +
   

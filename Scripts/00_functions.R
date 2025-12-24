@@ -58,43 +58,18 @@ investment_growth <- function(
   dt[]
 }
 
-# investment_growth <- function(
-#     dt,
-#     initial_investment = 0,
-#     add_investment = NULL,      # data.table: year, month_num, amount
-#     growth_col = "inflation",   # column name for growth/inflation
-#     invest_col = "investment_current_value"   # output investment column name
-# ) {
-#   library(data.table)
-#   
-#   dt <- copy(dt)
-#   setorder(dt, date)
-#   
-#   # column to hold additional investment
-#   dt[, add_amt := 0]
-#   
-#   # merge additional investments if provided
-#   if (!is.null(add_investment)) {
-#     setkey(add_investment, year, month_num)
-#     setkey(dt, year, month_num)
-#     
-#     dt[add_investment, add_amt := i.amount]
-#   }
-#   
-#   gcol <- growth_col
-#   icol <- invest_col
-#   
-#   # investment calculation
-#   dt[, (icol) := {
-#     v <- numeric(.N)
-#     v[1] <- initial_investment
-#     
-#     for (i in 2:.N) {
-#       v[i] <- (v[i - 1] + add_amt[i]) *
-#         (1 + get(gcol)[i] / 100)
-#     }
-#     v
-#   }]
-#   
-#   dt[] %>% data.table()
-# }
+
+# XIRR --------------------------------------------------------------------
+
+XIRR <- function(cash_flows, dates, guess = 0.1) {
+  
+  dates <- as.Date(dates)
+  t <- as.numeric(difftime(dates, dates[1], units = "days")) / 365
+  
+  f <- function(rate) {
+    sum(cash_flows / (1 + rate)^t)
+  }
+  
+  uniroot(f, lower = -0.99, upper = 10)$root
+}
+

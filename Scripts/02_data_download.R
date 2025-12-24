@@ -1,5 +1,6 @@
 
 # Inflation data ----------------------------------------------------------
+# https://fred.stlouisfed.org/series/INDCPIALLMINMEI
 
 url <- paste0(
   "https://fred.stlouisfed.org/graph/fredgraph.csv?",
