@@ -1,12 +1,13 @@
 
 # CPI plot ----------------------------------------------------------------
 
-cpi_plot <- inflation_data %>% ggplot(aes(x=date,y=CPI))+
+cpi_plot <- inflation_data  %>% ggplot(aes(x=date,y=CPI))+
   geom_line(color = "blue")+
   labs(title = "Consumer Price Index (CPI) over Time",
-       x = "Date", y = "CPI")+
+       x = "year", y = "CPI")+
   theme_minimal()+
-  theme(plot.title = element_text(hjust = 0.5 , face = "bold"))
+  theme(plot.title = element_text(hjust = 0.5 , face = "bold"))+
+  scale_x_date(date_labels = "%Y", date_breaks = "5 year")
 
 cpi_plot
 

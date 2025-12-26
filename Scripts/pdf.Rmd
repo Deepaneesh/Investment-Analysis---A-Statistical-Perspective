@@ -1,8 +1,71 @@
 ---
-title: "pdf"
+title: "Investment Analysis & Investment Tracker - A Statistical Prespective"
 output: 
   pdf_document: 
     toc: true
     highlight: tango
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
 
+\newpage
+
+**“Money that doesn’t grow at least at the pace of inflation is silently losing its worth. Beating inflation is not luck—it is a skill. Sustaining it through time is the art of investing, and compounding is the power that turns patience into wealth.”**
+
+# **Inflation**
+
+**what is inflation?**
+
+Inflation is a macroeconomic phenomenon that represents the persistent and general increase in the price level of goods and services in an economy over time.
+It reduces the purchasing power of money, meaning that consumers need to spend more money to purchase the same quantity of goods and services compared to an earlier period.
+
+**Inflation is commonly measured by using the Consumer Price Index (CPI).**
+
+## **CPI**
+
+The Consumer Price Index (CPI) is a measure that examines the weighted average of prices of a basket of consumer goods and services, such as transportation, food, and medical care.
+It is calculated by taking price changes for each item in the predetermined basket of goods and averaging them.
+
+The CPI is used to measure inflation by tracking changes in the price level of a market basket of consumer goods and services over time.
+When the CPI rises, it indicates that the average price level of goods and services has increased, which is a sign of inflation.
+Conversely, when the CPI falls, it indicates deflation.
+
+CPI values are often reported on a monthly basis, and the percentage change in CPI from one period to another is used to calculate the inflation rate.
+
+## **CPI Over Time**
+
+```{r echo=FALSE , fig.width = 12, fig.height = 6}
+cpi_plot
+```
+
+\newpage
+## **Inflation Rate Calculation**
+
+The inflation rate is calculated using the formula:
+$$
+\text{Inflation Rate (\%)}=\frac{\text{CPI}_t-\text{CPI}_{t-1}}{\text{CPI}_{t-1}}\times100
+$$
+Where:
+
+-    $\textbf{CPI}_\textbf{t}$ is the Consumer Price Index at the current time period.
+
+-    $\textbf{CPI}_\textbf{t-1}$ is the Consumer Price Index at the previous time period.
+
+**Month on Month (MoM) Inflation Rate Calculation:**
+$$
+\text{MoM Inflation (\%)} =
+\frac{\text{CPI}_{t} - \text{CPI}_{t-1}}{\text{CPI}_{t-1}} \times 100
+$$
+
+**Year on Year (YoY) Inflation Rate Calculation:**
+$$
+\text{YoY Inflation (\%)} =
+\frac{\text{CPI}_{t} - \text{CPI}_{t-12}}{\text{CPI}_{t-12}} \times 100
+$$
+
+
+## **Monthly and yearly Inflation Rate**
+```{r echo=FALSE , fig.width = 14, fig.height = 18}
+inflation_plot
+```

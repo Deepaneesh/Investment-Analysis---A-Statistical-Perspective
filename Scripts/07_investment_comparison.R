@@ -138,7 +138,7 @@ fd_plot <- investment_comparison %>% filter(Asset_Class %in% c("investment_fd","
       size = 4
     ) +
     labs(
-      title = "FD Investment Distribution by Asset Class",
+      title = "FD Investment ",
       fill = "Investment Type"
     ) + theme(
       plot.title = element_text(hjust = 0.5, face = "bold"),
