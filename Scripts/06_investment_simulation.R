@@ -91,10 +91,15 @@ comparison_data <- past_inflation_return %>%
     past_nifty_50_return %>%
       select(month,year, investment_current_value_nifty = investment_current_value,actual_investment),
     by = c("month","year")
+  ) %>% 
+  full_join(
+    my_growth %>% select(month,year,investment_growth) %>% 
+      mutate(month = month(month, label = TRUE)),
+    by = c("month","year")
   )
-comparison_data[is.na(date), date := ymd(paste(year, month, 1, sep = "-"))]
+comparison_data[is.na(date), date := ymd(paste(year, month, 28, sep = "-"))]
 
-past_investment_plot <- comparison_data %>% filter(year >= 2000) %>%
+past_investment_plot <- comparison_data %>% filter(year >= 2015) %>%
   ggplot(aes(x = date)) +
   
   geom_line(
@@ -118,11 +123,18 @@ past_investment_plot <- comparison_data %>% filter(year >= 2000) %>%
       y = actual_investment,
       color = "Actual Investment"
     ),
+    size = 1 , linetype = "dashed"
+  ) +
+  geom_line(
+    aes(
+      y = investment_growth,
+      color = "investment_growth"
+    ),
     size = 1
   ) +
   
   labs(
-    title = "Investment Growth Over Time: Inflation vs NIFTY 50",
+    title = "Investment Growth Over Time: Inflation vs NIFTY 50 vs Actual",
     x = "Date",
     y = "Investment Value",
     color = "Investment Type"
@@ -132,7 +144,8 @@ past_investment_plot <- comparison_data %>% filter(year >= 2000) %>%
     values = c(
       "Inflation growth Investment" = "red",
       "NIFTY 50 growth Investment" = "blue",
-      "Actual Investment" = "green"
+      "Actual Investment" = "black",
+      "investment_growth" = "green"
     )
   ) +
   
@@ -142,7 +155,7 @@ past_investment_plot <- comparison_data %>% filter(year >= 2000) %>%
     legend.position = "bottom"
   )+
   scale_x_date(
-    date_breaks = "5 years",
+    date_breaks = "2 years",
     date_labels = "%Y"
   ) 
 past_investment_plot
