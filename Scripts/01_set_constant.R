@@ -8,6 +8,7 @@ library(patchwork)
 library(janitor)
 library(quantmod)
 library(rmarkdown)
+library(readxl)
 
 # Constants ----------------------------------------------------------------
 
