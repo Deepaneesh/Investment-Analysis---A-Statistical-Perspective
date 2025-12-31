@@ -61,15 +61,52 @@ investment_growth <- function(
 
 # XIRR --------------------------------------------------------------------
 
-XIRR <- function(cash_flows, dates, guess = 0.1) {
+XIRR <- function(investments,
+                 invest_dates,
+                 current_value,
+                 current_date = Sys.Date()) {
   
-  dates <- as.Date(dates)
-  t <- as.numeric(difftime(dates, dates[1], units = "days")) / 365
+  # Convert dates
+  invest_dates <- as.Date(invest_dates)
+  current_date <- as.Date(current_date)
   
+  # Validation
+  if (length(investments) != length(invest_dates)) {
+    stop("investments and invest_dates must have the same length")
+  }
+  
+  if (current_value <= 0) {
+    stop("current_value must be positive")
+  }
+  
+  # Build cash flows (Excel convention)
+  cash_flows <- c(-investments, current_value)
+  dates <- c(invest_dates, current_date)
+  
+  if (!any(cash_flows < 0) || !any(cash_flows > 0)) {
+    stop("Cash flows must contain both investments and final value")
+  }
+  
+  # Sort by date (important!)
+  ord <- order(dates)
+  cash_flows <- cash_flows[ord]
+  dates <- dates[ord]
+  
+  # Time in years (Excel-style)
+  t <- as.numeric(difftime(dates, dates[1], units = "days")) / 365.25
+  
+  # XIRR equation
   f <- function(rate) {
     sum(cash_flows / (1 + rate)^t)
   }
   
-  uniroot(f, lower = -0.99, upper = 10)$root
+  # Solve for IRR
+  uniroot(
+    f,
+    lower = -0.99,
+    upper = 10,
+    extendInt = "yes"
+  )$root
 }
+
 

@@ -103,7 +103,7 @@ monthly_nifty_plot = nifty_data %>%filter(year>1990) %>%  ggplot(
   theme_minimal()+
   scale_y_discrete(limits = rev)+
   scale_x_discrete(position = "top")+
-  geom_text(aes(label = paste0(round(monthly_return,1),"%")),size = 2)+
+  geom_text(aes(label = paste0(round(monthly_return,1),"%")),size = 2,fontface="bold")+
   labs(title = "Nifty 50 Monthly Return",
        x = "Month", y = "years")+
   theme(legend.position = "none",
@@ -123,7 +123,7 @@ yearly_nifty_plot <- yearly_nifty_data %>% ggplot(
   theme_minimal()+
   scale_y_discrete(limits = rev)+
   scale_x_discrete(position = "top")+
-  geom_text(aes(label = paste0(round(yearly_return,1),"%")),size = 2)+
+  geom_text(aes(label = paste0(round(yearly_return,1),"%")),size = 2,fontface="bold")+
   labs(title = "Nifty 50 Yearly Return",
        x = "yearly growth value", y = "years")+
   theme(legend.position = "none",

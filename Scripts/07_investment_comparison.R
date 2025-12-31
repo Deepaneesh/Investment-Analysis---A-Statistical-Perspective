@@ -65,7 +65,7 @@
       plot.title = element_text(hjust = 0.5, face = "bold"),
       legend.position = "bottom"
     )+ scale_fill_discrete(
-      labels = c("Invested Amount" , "Current Value Amount")
+      labels = c( "Current Value Amount","Invested Amount" )
       
     )
 
@@ -114,7 +114,11 @@
       legend.position = "bottom"
     ) 
   
-
+  investment_current_pie_chart <-
+    investment_pie_chart_plot +
+    plot_spacer() +
+    current_value_pie_chart_plot +
+    plot_layout(ncol = 3, widths = c(1, 0.1, 1))
 # FD investment  ---------------------------------------------------
 fd_plot <- investment_comparison %>% filter(Asset_Class %in% c("investment_fd","emergency_fd","opportunity_fd")) %>% 
     mutate(

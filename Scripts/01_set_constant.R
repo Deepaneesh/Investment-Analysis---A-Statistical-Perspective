@@ -12,7 +12,7 @@ library(readxl)
 
 # Constants ----------------------------------------------------------------
 
-data_download <- FALSE
+data_download <- F
 
 # inflation 
 start_year <- 1957

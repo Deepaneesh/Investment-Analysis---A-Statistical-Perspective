@@ -40,6 +40,10 @@ source("Scripts/06_investment_simulation.R")
 
 source("Scripts/07_investment_comparison.R")
 
+# Calculations ------------------------------------------------------------
+
+source("Scripts/08_calculations.R")
+
 # Report Generation -------------------------------------------------------
 
 source("Scripts/report_generation.R")

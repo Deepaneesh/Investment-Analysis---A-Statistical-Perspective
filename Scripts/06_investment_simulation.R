@@ -99,7 +99,7 @@ comparison_data <- past_inflation_return %>%
   )
 comparison_data[is.na(date), date := ymd(paste(year, month, 28, sep = "-"))]
 
-past_investment_plot <- comparison_data %>% filter(year >= 2015) %>%
+past_investment_plot <- comparison_data %>% filter(year >= 2023) %>%
   ggplot(aes(x = date)) +
   
   geom_line(
@@ -155,7 +155,7 @@ past_investment_plot <- comparison_data %>% filter(year >= 2015) %>%
     legend.position = "bottom"
   )+
   scale_x_date(
-    date_breaks = "2 years",
+    date_breaks = "1 years",
     date_labels = "%Y"
   ) 
 past_investment_plot

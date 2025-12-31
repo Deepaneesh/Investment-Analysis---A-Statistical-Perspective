@@ -22,7 +22,7 @@ It reduces the purchasing power of money, meaning that consumers need to spend m
 
 **Inflation is commonly measured by using the Consumer Price Index (CPI).**
 
-## **CPI**
+## CPI
 
 The Consumer Price Index (CPI) is a measure that examines the weighted average of prices of a basket of consumer goods and services, such as transportation, food, and medical care.
 It is calculated by taking price changes for each item in the predetermined basket of goods and averaging them.
@@ -33,39 +33,119 @@ Conversely, when the CPI falls, it indicates deflation.
 
 CPI values are often reported on a monthly basis, and the percentage change in CPI from one period to another is used to calculate the inflation rate.
 
-## **CPI Over Time**
+## CPI Over Time
 
 ```{r echo=FALSE , fig.width = 12, fig.height = 6}
 cpi_plot
 ```
 
 \newpage
-## **Inflation Rate Calculation**
 
-The inflation rate is calculated using the formula:
-$$
+## Inflation Rate Calculation
+
+The inflation rate is calculated using the formula: $$
 \text{Inflation Rate (\%)}=\frac{\text{CPI}_t-\text{CPI}_{t-1}}{\text{CPI}_{t-1}}\times100
-$$
-Where:
+$$ Where:
 
--    $\textbf{CPI}_\textbf{t}$ is the Consumer Price Index at the current time period.
+-   $\textbf{CPI}_\textbf{t}$ is the Consumer Price Index at the current time period.
 
--    $\textbf{CPI}_\textbf{t-1}$ is the Consumer Price Index at the previous time period.
+-   $\textbf{CPI}_\textbf{t-1}$ is the Consumer Price Index at the previous time period.
 
-**Month on Month (MoM) Inflation Rate Calculation:**
-$$
+**Month on Month (MoM) Inflation Rate Calculation:** $$
 \text{MoM Inflation (\%)} =
 \frac{\text{CPI}_{t} - \text{CPI}_{t-1}}{\text{CPI}_{t-1}} \times 100
 $$
 
-**Year on Year (YoY) Inflation Rate Calculation:**
-$$
+**Year on Year (YoY) Inflation Rate Calculation:** $$
 \text{YoY Inflation (\%)} =
 \frac{\text{CPI}_{t} - \text{CPI}_{t-12}}{\text{CPI}_{t-12}} \times 100
 $$
 
+## Monthly and yearly Inflation Rate
 
-## **Monthly and yearly Inflation Rate**
 ```{r echo=FALSE , fig.width = 14, fig.height = 18}
 inflation_plot
+```
+
+\newpage
+
+Previously, we saw how much percentage the amount should grow to satisfy the inflation growth rate.
+There are different indicators that provide higher growth in the economic market.
+One of the most famous indicators is the NIFTY 50.
+Here, we see what is **NIFTY 50**.
+
+# **NIFTY 50**
+
+NIFTY 50 is the benchmark index of the **National Stock Exchange (NSE)** of India.
+It represents the weighted average of the 50 largest and most liquid Indian companies listed on the NSE.
+The NIFTY 50 index is widely used as a barometer of the overall performance of the Indian stock market and serves as a benchmark for various mutual funds and investment portfolios.
+
+NIFTY 50 reflects market trends and investor sentiment in the Indian equity market.
+It is calculated using the free-float market capitalization method, which considers only the market value of shares that are available for trading in the market.
+
+The index covers various sectors of the economy, including banking, information technology, energy, pharmaceuticals, and consumer goods, among others.
+
+The NIFTY 50 index is reviewed semi-annually to ensure that it accurately represents the performance of the Indian stock market.
+
+## Nifty 50 Index over Time
+
+```{r echo=FALSE , fig.width = 12, fig.height = 6}
+nifty50_plot
+```
+
+Calculation of monthly and yearly growth rate of Nifty 50 index is shows the percentage change in the index value over a specific period.
+
+\newpage
+
+## Nifty 50 Monthly and Yearly growth rate
+
+```{r echo=FALSE , fig.width = 14, fig.height = 18}
+nifty50_combine_plot
+```
+
+\newpage
+
+# **Investment Growth**
+
+To understand how investments grow over time, we can analyze the growth of an investment considering different growth rates, such as inflation and NIFTY 50 returns.
+
+Here, we will look at how an investment grows over time when subjected to inflation rates and NIFTY 50 returns.
+and my personal investment Portfolio growth.
+
+```{r echo=FALSE, fig.height=6, fig.width=14, message=FALSE, warning=FALSE}
+past_investment_plot
+```
+
+## Investment Categories and Growth Comparison
+
+I invested in different categories like stocks, mutual funds, bonds, gold and fixed deposits.
+
+Even in a fixed deposit, I created three different fixed deposits for my plans:
+
+1.  **Investment Fixed Deposit:** For general investment purposes.
+
+2.  **Emergency Fixed Deposit:** For emergency funds.
+
+3.  **Opportunity Fixed Deposit:** For taking advantage of sudden investment opportunities.
+
+Bonds doesn\`t provide high returns like stocks or mutual funds, but they are relatively safer and provide a steady income stream to invest more in the future.
+
+\newpage
+
+## Invested Amount vs Current Value by Asset Class
+
+```{r echo=FALSE, fig.height=6, fig.width=15, message=FALSE, warning=FALSE}
+overall_comparison_plot
+```
+
+## Invested and current Assest Value Distribution
+
+```{r echo=FALSE, fig.height=4, fig.width=12, message=FALSE, warning=FALSE}
+investment_current_pie_chart
+```
+
+## Fixed Deposit Distribution
+
+```{r echo=FALSE, fig.height=4, fig.width=12, message=FALSE, warning=FALSE}
+fd_plot
 ```
