@@ -132,6 +132,47 @@ Bonds doesn\`t provide high returns like stocks or mutual funds, but they are re
 
 \newpage
 
+## My Investment Growth indicators
+
+### Overall Investment Growth Comparison
+```{r echo=FALSE}
+paste0("Total Invested Amount is ", total_invested_amount,", ","Current Value of my investment is ", current_investment_value)
+
+paste0("XIRR on my overall investment is ", round(cal_investment_xirr*100,2), "%",", ","Overall return on my investment is ", round(overall_return,2), "%")
+```
+### Stock
+```{r echo=FALSE}
+
+paste0("Total Stock Invested Amount is ", total_stock_invested_amount,", ","Current Value of my Stock is ", current_stock_value)
+
+paste0("XIRR on my stock investment is ", round(stock_investment_xirr*100,2), "%",", ","Overall return on my stock investment is ", round(overall_stock_return,2), "%")
+```
+### Mutual Fund
+```{r echo=FALSE}
+
+paste0("Total Mutual Fund Invested Amount is ", total_mf_invested_amount,", ","Current Value of my Mutual Fund is ", current_mf_value)
+
+paste0("XIRR on my mutual fund investment is ", round(mf_investment_xirr*100,2), "%",", ","Overall return on my mutual fund investment is ", round(overall_mf_return,2), "%")
+```
+### Fixed Deposit
+```{r echo=FALSE}
+
+paste0("Total Fixed Deposit Invested Amount is ", total_fd_invested_amount,", ","Current Value of my Fixed Deposit is ", current_fd_value)
+
+paste0("XIRR on my FD investment is ", round(fd_investment_xirr*100,2), "%", ", ","Overall return on my FD investment is ", round(overall_fd_return,2), "%")
+```
+### Gold
+```{r echo=FALSE}
+
+paste0("Total Gold Invested Amount is ", total_gold_invested_amount,", ","Current Value of my Gold is ", current_gold_value)
+
+paste0("XIRR on my gold investment is ", round(gold_investment_xirr*100,2), "%",", ","Overall return on my gold investment is ", round(overall_gold_return,2), "%")
+
+```
+
+
+\newpage
+
 ## Invested Amount vs Current Value by Asset Class
 
 ```{r echo=FALSE, fig.height=6, fig.width=15, message=FALSE, warning=FALSE}
