@@ -10,6 +10,7 @@ library(quantmod)
 library(rmarkdown)
 library(readxl)
 
+options(scipen = 999)
 # Constants ----------------------------------------------------------------
 
 data_download <- F

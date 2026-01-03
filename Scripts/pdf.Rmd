@@ -130,46 +130,18 @@ Even in a fixed deposit, I created three different fixed deposits for my plans:
 
 Bonds doesn\`t provide high returns like stocks or mutual funds, but they are relatively safer and provide a steady income stream to invest more in the future.
 
-\newpage
-
 ## My Investment Growth indicators
 
 ### Overall Investment Growth Comparison
-```{r echo=FALSE}
-paste0("Total Invested Amount is ", total_invested_amount,", ","Current Value of my investment is ", current_investment_value)
 
-paste0("XIRR on my overall investment is ", round(cal_investment_xirr*100,2), "%",", ","Overall return on my investment is ", round(overall_return,2), "%")
-```
-### Stock
-```{r echo=FALSE}
-
-paste0("Total Stock Invested Amount is ", total_stock_invested_amount,", ","Current Value of my Stock is ", current_stock_value)
-
-paste0("XIRR on my stock investment is ", round(stock_investment_xirr*100,2), "%",", ","Overall return on my stock investment is ", round(overall_stock_return,2), "%")
-```
-### Mutual Fund
-```{r echo=FALSE}
-
-paste0("Total Mutual Fund Invested Amount is ", total_mf_invested_amount,", ","Current Value of my Mutual Fund is ", current_mf_value)
-
-paste0("XIRR on my mutual fund investment is ", round(mf_investment_xirr*100,2), "%",", ","Overall return on my mutual fund investment is ", round(overall_mf_return,2), "%")
-```
-### Fixed Deposit
-```{r echo=FALSE}
-
-paste0("Total Fixed Deposit Invested Amount is ", total_fd_invested_amount,", ","Current Value of my Fixed Deposit is ", current_fd_value)
-
-paste0("XIRR on my FD investment is ", round(fd_investment_xirr*100,2), "%", ", ","Overall return on my FD investment is ", round(overall_fd_return,2), "%")
-```
-### Gold
-```{r echo=FALSE}
-
-paste0("Total Gold Invested Amount is ", total_gold_invested_amount,", ","Current Value of my Gold is ", current_gold_value)
-
-paste0("XIRR on my gold investment is ", round(gold_investment_xirr*100,2), "%",", ","Overall return on my gold investment is ", round(overall_gold_return,2), "%")
-
-```
-
+|   | Invested Value | Current Value | Gained | XIRR | Overall Percentage |
+|------------|------------|------------|------------|------------|------------|
+| Stock | `r total_stock_invested_amount` | `r current_stock_value` | `r current_stock_value - total_stock_invested_amount` | `r paste0(round(stock_investment_xirr*100,2), "%")` | `r paste0( round(overall_stock_return,2), "%")` |
+| Mutual funds | `r total_mf_invested_amount` | `r current_mf_value` | `r current_mf_value - total_mf_invested_amount` | `r paste0( round(mf_investment_xirr*100,2), "%")` | `r paste0( round(overall_mf_return,2), "%")` |
+| Fixed Deposit | `r total_fd_invested_amount` | `r current_fd_value` | `r current_fd_value - total_fd_invested_amount` | `r paste0( round(fd_investment_xirr*100,2), "%")` | `r paste0( round(overall_fd_return,2), "%")` |
+| Gold | `r total_gold_invested_amount` | `r current_gold_value` | `r current_gold_value - total_gold_invested_amount` | `r paste0(round(gold_investment_xirr*100,2), "%")` | `r paste0(round(overall_gold_return,2), "%")` |
+| Bond |  |  |  |  |  |
+| Total | `r total_invested_amount` | `r current_investment_value` | `r current_investment_value - total_invested_amount` | `r paste0( round(cal_investment_xirr*100,2), "%")` | `r paste0( round(overall_return,2), "%")` |
 
 \newpage
 
