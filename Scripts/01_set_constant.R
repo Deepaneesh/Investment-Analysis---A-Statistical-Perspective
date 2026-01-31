@@ -13,7 +13,7 @@ library(readxl)
 options(scipen = 999)
 # Constants ----------------------------------------------------------------
 
-data_download <- F
+data_download <- T
 
 # inflation 
 start_year <- 1957
@@ -22,6 +22,6 @@ end_year <- 2025
 # Nifty 50 data
 Nifty_download_from <- "2025-01-01"
 Nifty_start_year <- 2000
-Nifty_end_year <- 2025
+Nifty_end_year <- 2026
 
 
